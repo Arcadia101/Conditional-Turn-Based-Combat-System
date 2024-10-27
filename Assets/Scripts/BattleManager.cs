@@ -23,8 +23,6 @@ public class BattleManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             SortTurns();
-            Debug.Log("Orden de Turnos: ");
-            PrintTurns();
         }
         
         if(!characterReady && characters.Count > 0) CheckCharactersReady();
@@ -37,6 +35,7 @@ public class BattleManager : MonoBehaviour
     }
     
     //testing functions.
+    /*
     private void PrintTurns()
     {
         foreach (Character character in characters)
@@ -44,6 +43,7 @@ public class BattleManager : MonoBehaviour
             Debug.Log(character.characterName);
         }
     }
+    */
     
     //public functions.
     public void AddCharacter(Character character)
@@ -59,5 +59,6 @@ public class BattleManager : MonoBehaviour
     public void SortTurns()
     {
         characters.Sort((character1, character2) => character1.waitTurn.CompareTo(character2.waitTurn));
+        BattleUIManager.instance.UpdateTurnOrder(characters);
     }
 }

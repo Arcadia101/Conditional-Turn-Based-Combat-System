@@ -458,7 +458,7 @@ MonoBehaviour:
   turnSprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   characterSprite: {fileID: 0}
   initiative: 50
-  characterName: Iniciativa 50
+  characterName: Buti
   waitTurn: 0
   nextActionTime: 0
   ready: 0
@@ -668,7 +668,7 @@ MonoBehaviour:
   turnSprite: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
   characterSprite: {fileID: 0}
   initiative: 10
-  characterName: Iniciativa 10
+  characterName: Lajote
   waitTurn: 0
   nextActionTime: 0
   ready: 0
@@ -976,8 +976,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   turnSprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
   characterSprite: {fileID: 0}
-  initiative: 100
-  characterName: Iniciativa 100
+  initiative: 90
+  characterName: Arcadia
   waitTurn: 0
   nextActionTime: 0
   ready: 0
@@ -1209,7 +1209,7 @@ MonoBehaviour:
   turnSprite: {fileID: 10915, guid: 0000000000000000f000000000000000, type: 0}
   characterSprite: {fileID: 0}
   initiative: 30
-  characterName: Iniciativa 30
+  characterName: Azrael
   waitTurn: 0
   nextActionTime: 0
   ready: 0

@@ -23,6 +23,7 @@ public class BattleManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             SortTurns();
+            PrintTurns();
         }
         
         if(!characterReady && characters.Count > 0) CheckCharactersReady();
@@ -35,15 +36,15 @@ public class BattleManager : MonoBehaviour
     }
     
     //testing functions.
-    /*
+    
     private void PrintTurns()
     {
         foreach (Character character in characters)
         {
-            Debug.Log(character.characterName);
+            character.stats.PrintCurrentStats(character);
         }
     }
-    */
+    
     
     //public functions.
     public void AddCharacter(Character character)

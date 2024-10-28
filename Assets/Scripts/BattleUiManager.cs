@@ -37,16 +37,16 @@ public class BattleUIManager : MonoBehaviour
         foreach (Character character in characters)
         {
             TurnInfo firstTurnInfo = new TurnInfo(
-                character.characterName,
-                character.turnSprite,
+                character.stats.characterName,
+                character.stats.turnSprite,
                 character.waitTurn,
                 character.ready,
                 character.waitTurn + character.nextActionTime // Calcular el tiempo de espera del segundo turno
             );
 
             TurnInfo secondTurnInfo = new TurnInfo(
-                character.characterName,
-                character.turnSprite,
+                character.stats.characterName,
+                character.stats.turnSprite,
                 firstTurnInfo.NextWaitTurn,
                 false,
                 0

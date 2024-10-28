@@ -455,10 +455,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80fb7a1960f4a4a45b3e8986d3979a79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  turnSprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-  characterSprite: {fileID: 0}
-  initiative: 50
-  characterName: Buti
+  characterData: {fileID: 0}
+  stats: {fileID: 0}
   waitTurn: 0
   nextActionTime: 0
   ready: 0
@@ -645,7 +643,6 @@ GameObject:
   - component: {fileID: 709431404}
   - component: {fileID: 709431403}
   - component: {fileID: 709431402}
-  - component: {fileID: 709431407}
   m_Layer: 0
   m_Name: Character
   m_TagString: Untagged
@@ -665,10 +662,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80fb7a1960f4a4a45b3e8986d3979a79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  turnSprite: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
-  characterSprite: {fileID: 0}
-  initiative: 10
-  characterName: Lajote
+  characterData: {fileID: 0}
+  stats: {fileID: 0}
   waitTurn: 0
   nextActionTime: 0
   ready: 0
@@ -763,19 +758,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &709431407
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 709431401}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7cd2daa4568623644a8fe7f452b46b86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  character: {fileID: 709431402}
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -942,6 +924,100 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   turnInfoPrefab: {fileID: 5980849252057483389, guid: 1313e7e78fa4efa49ad58e98ff091dec, type: 3}
   TurnOrderUIContainer: {fileID: 1885185981}
+--- !u!1 &1342599175
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1342599177}
+  - component: {fileID: 1342599176}
+  - component: {fileID: 1342599178}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1342599176
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1342599175}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b41eba31fddcff44d9734653bc6d576d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  allSkills:
+  - skillName: Double Attack
+    allowedClasses: 0000000002000000
+    manaCost: 10
+    damage: 15
+    description: ataque doble
+  - skillName: Triple Attack
+    allowedClasses: 02000000
+    manaCost: 10
+    damage: 15
+    description: ataque triple
+  - skillName: Triple magic
+    allowedClasses: 02000000
+    manaCost: 10
+    damage: 15
+    description: magia triple
+  classBonuses:
+  - className: Warrior
+    classType: 0
+    initiativeBonus: 1
+    healthBonus: 1.2
+    damageBonus: 1.2
+    defenseBonus: 1.2
+  - className: Ranger
+    classType: 2
+    initiativeBonus: 1
+    healthBonus: 1.5
+    damageBonus: 1.5
+    defenseBonus: 1.5
+  - className: Mage
+    classType: 1
+    initiativeBonus: 1
+    healthBonus: 2
+    damageBonus: 2
+    defenseBonus: 2
+--- !u!4 &1342599177
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1342599175}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 265.9329, y: 825.5695, z: 1.8705542}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1342599178
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1342599175}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cae65dc9c4359f49a0d887659067801, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterDataList:
+  - {fileID: 0}
 --- !u!1 &1464617472
 GameObject:
   m_ObjectHideFlags: 0
@@ -974,10 +1050,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80fb7a1960f4a4a45b3e8986d3979a79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  turnSprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  characterSprite: {fileID: 0}
-  initiative: 90
-  characterName: Arcadia
+  characterData: {fileID: 0}
+  stats: {fileID: 0}
   waitTurn: 0
   nextActionTime: 0
   ready: 0
@@ -1206,10 +1280,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80fb7a1960f4a4a45b3e8986d3979a79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  turnSprite: {fileID: 10915, guid: 0000000000000000f000000000000000, type: 0}
-  characterSprite: {fileID: 0}
-  initiative: 30
-  characterName: Azrael
+  characterData: {fileID: 0}
+  stats: {fileID: 0}
   waitTurn: 0
   nextActionTime: 0
   ready: 0
@@ -1318,3 +1390,4 @@ SceneRoots:
   - {fileID: 2008834898}
   - {fileID: 605258539}
   - {fileID: 1464617477}
+  - {fileID: 1342599177}

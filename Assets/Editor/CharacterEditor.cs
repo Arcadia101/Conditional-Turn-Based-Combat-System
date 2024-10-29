@@ -26,7 +26,7 @@ public class CharacterEditor : EditorWindow
 
         if (characterManager == null)
         {
-            Debug.LogError("CharacterManager not found in Resources folder.");
+            Debug.LogError("CharacterManager not found in ScriptableObjects folder.");
         }
     }
 
@@ -34,11 +34,11 @@ public class CharacterEditor : EditorWindow
     {
         if (characterManager == null)
         {
-            EditorGUILayout.HelpBox("CharacterManager not found. Please make sure it is in the Resources folder.", MessageType.Error);
+            EditorGUILayout.HelpBox("CharacterManager not found. Please make sure it is in the ScriptableObjects folder.", MessageType.Error);
             return;
         }
 
-        EditorGUILayout.LabelField("Unified Character Editor", EditorStyles.boldLabel);
+        EditorGUILayout.LabelField("Character Editor", EditorStyles.boldLabel);
         EditorGUILayout.Space();
 
         // Campo para ingresar el nombre del nuevo personaje

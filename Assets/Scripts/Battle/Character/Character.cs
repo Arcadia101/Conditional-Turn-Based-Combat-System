@@ -4,34 +4,36 @@ using UnityEngine;
 
 public class Character : MonoBehaviour
 {
-    [CharacterDataSelector] public string selectedCharacterData;
-    [Self]public CharacterStats stats;
-    [HideInInspector] public float waitTurn;
-    [HideInInspector] public float nextActionTime; 
-    [HideInInspector] public bool ready;
+    [CharacterDataSelector] public string selectedCharacterData; // Selected character data name
+    [Self] public CharacterStats stats; // Reference to character statistics
+    [HideInInspector] public float waitTurn; // Time to wait for the next turn
+    [HideInInspector] public float nextActionTime; // Time for the next action
+    [HideInInspector] public bool ready; // Is the character ready for the next action
 
     private void Start()
     {
-        // Aquí obtendrás el CharacterData correspondiente al nombre seleccionado
+        // Retrieve the CharacterData corresponding to the selected name
         CharacterData characterData = CharacterManager.instance.characterDataList
             .Find(data => data.characterName == selectedCharacterData);
 
         if (characterData != null)
         {
-            InitializeCharacter(characterData);
+            InitializeCharacter(characterData); // Initialize character stats
         }
     }
 
     private void Update()
     {
+        // Check if the character is not ready and waitTurn is greater than 0
         if (!BattleManager.instance.characterReady && waitTurn > 0) 
-            WaitCountDown();
+            WaitCountDown(); // Count down the wait time
         else if (waitTurn <= 0f) 
-            ready = true;
+            ready = true; // Mark the character as ready
     }
 
     private void InitializeCharacter(CharacterData characterData)
     {
+        // Initialize character stats from CharacterData
         stats.characterName = characterData.characterName;
         stats.characterClass = characterData.characterClass;
         stats.baseInitiative = characterData.baseInitiative;
@@ -41,18 +43,20 @@ public class Character : MonoBehaviour
         stats.turnSprite = characterData.turnSprite;
         stats.characterSprite = characterData.characterSprite;
 
-        // Llama a ApplyClassBonuses aquí si es necesario
+        // Call ApplyClassBonuses if necessary
         stats.ApplyClassBonuses();
     }
 
     public void CalculateNextTurn(float modifier)
     {
+        // Update the wait time for the next turn
         waitTurn = Mathf.Max(0, waitTurn + modifier);
-        nextActionTime = waitTurn + modifier;
+        nextActionTime = waitTurn + modifier; // Calculate the next action time
     }
 
     public void WaitCountDown()
     {
+        // Decrease wait time
         waitTurn -= Time.deltaTime;
     }
 }

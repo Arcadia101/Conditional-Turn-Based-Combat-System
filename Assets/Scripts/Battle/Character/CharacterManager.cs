@@ -1,5 +1,5 @@
-using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine;
 
 [CreateAssetMenu(fileName = "CharacterManager", menuName = "Character Manager")]
 public class CharacterManager : ScriptableObject
@@ -10,6 +10,6 @@ public class CharacterManager : ScriptableObject
 
     private void OnEnable()
     {
-        instance = this; // Establecer la instancia cuando se habilita
+        instance = this; // Set the instance when enabled
     }
 }

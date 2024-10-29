@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5096f9d21ce54c2db9d8ad27d505d54c, type: 3}
   m_Name: Buti
   m_EditorClassIdentifier: 
+  classManager: {fileID: 11400000, guid: 6516e85aad7011949934d951e2a69adb, type: 2}
   characterName: Buti
-  characterClass: {fileID: 0}
+  characterClass: {fileID: 11400000, guid: 0a98963d28a4d8343b5d9b6be57344cb, type: 2}
   baseInitiative: 0
   baseHealth: 0
   baseDamage: 0

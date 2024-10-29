@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5096f9d21ce54c2db9d8ad27d505d54c, type: 3}
   m_Name: Lajote
   m_EditorClassIdentifier: 
+  classManager: {fileID: 11400000, guid: 6516e85aad7011949934d951e2a69adb, type: 2}
   characterName: Lajote
   characterClass: {fileID: 11400000, guid: 2766407b2b14d2c40a6ee83dd778e4ef, type: 2}
   baseInitiative: 75

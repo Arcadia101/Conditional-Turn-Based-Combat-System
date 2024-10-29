@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5096f9d21ce54c2db9d8ad27d505d54c, type: 3}
   m_Name: Azael
   m_EditorClassIdentifier: 
+  classManager: {fileID: 11400000, guid: 6516e85aad7011949934d951e2a69adb, type: 2}
   characterName: Azael
   characterClass: {fileID: 11400000, guid: 2be80395fc79ad749915670daed7ffdd, type: 2}
   baseInitiative: 60

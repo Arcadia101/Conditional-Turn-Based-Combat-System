@@ -34,6 +34,7 @@ public class Character : MonoBehaviour
     private void InitializeCharacter(CharacterData characterData)
     {
         // Initialize character stats from CharacterData
+        stats.classManager = characterData.classManager;
         stats.characterName = characterData.characterName;
         stats.characterClass = characterData.characterClass;
         stats.baseInitiative = characterData.baseInitiative;

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5096f9d21ce54c2db9d8ad27d505d54c, type: 3}
   m_Name: Arcadia
   m_EditorClassIdentifier: 
+  classManager: {fileID: 11400000, guid: 6516e85aad7011949934d951e2a69adb, type: 2}
   characterName: Arcadia
   characterClass: {fileID: 11400000, guid: aad5907fcfe5e86479b95ce48d872f66, type: 2}
   baseInitiative: 90

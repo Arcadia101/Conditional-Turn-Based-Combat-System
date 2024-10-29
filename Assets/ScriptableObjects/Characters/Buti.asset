@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5096f9d21ce54c2db9d8ad27d505d54c, type: 3}
-  m_Name: Arcadia
+  m_Name: Buti
   m_EditorClassIdentifier: 
-  characterName: Arcadia
-  characterClass: {fileID: 11400000, guid: aad5907fcfe5e86479b95ce48d872f66, type: 2}
-  baseInitiative: 90
-  baseHealth: 100
-  baseDamage: 15
-  baseDefense: 15
-  turnSprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-  characterSprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  characterName: Buti
+  characterClass: {fileID: 0}
+  baseInitiative: 0
+  baseHealth: 0
+  baseDamage: 0
+  baseDefense: 0
+  turnSprite: {fileID: 0}
+  characterSprite: {fileID: 0}

@@ -5,6 +5,7 @@ using UnityEngine;
 public class CharacterEditor : EditorWindow
 {
     private CharacterManager characterManager; // Reference to the CharacterManager
+    private ClassManager classManager; // Reference to ClassManager
     private Vector2 scrollPos; // Scroll position for the character list
 
     // Collapse state for each CharacterData
@@ -23,10 +24,16 @@ public class CharacterEditor : EditorWindow
     {
         // Load the CharacterManager to access the list of CharacterData
         characterManager = AssetDatabase.LoadAssetAtPath<CharacterManager>("Assets/ScriptableObjects/CharacterManager.asset");
+        classManager = AssetDatabase.LoadAssetAtPath<ClassManager>("Assets/ScriptableObjects/ClassManager.asset");
 
         if (characterManager == null)
         {
             Debug.LogError("CharacterManager not found in ScriptableObjects folder."); // Log error if CharacterManager is not found
+        }
+
+        if (classManager == null)
+        {
+            Debug.LogError("ClassManager not found in ScriptableObjects folder."); // Log error if ClassManager is not found
         }
     }
 
@@ -35,6 +42,12 @@ public class CharacterEditor : EditorWindow
         if (characterManager == null)
         {
             EditorGUILayout.HelpBox("CharacterManager not found. Please make sure it is in the ScriptableObjects folder.", MessageType.Error); // Show error message
+            return;
+        }
+
+        if (classManager == null)
+        {
+            EditorGUILayout.HelpBox("ClassManager not found. Please make sure it is in the ScriptableObjects folder.", MessageType.Error); // Show error message
             return;
         }
 
@@ -74,6 +87,24 @@ public class CharacterEditor : EditorWindow
                 // Show field to change the character's name
                 characterData.characterName = EditorGUILayout.TextField("Character Name", characterData.characterName);
 
+                // Class selection
+                if (classManager.classDataList.Count > 0)
+                {
+                    int classIndex = characterData.characterClass != null ? classManager.classDataList.IndexOf(characterData.characterClass) : -1;
+                    classIndex = EditorGUILayout.Popup("Select Class", classIndex, classManager.classDataList.ConvertAll(c => c.className).ToArray());
+                    characterData.characterClass = classIndex >= 0 ? classManager.classDataList[classIndex] : null;
+                }
+                else
+                {
+                    EditorGUILayout.HelpBox("No classes available. Please create a class in Class Manager.", MessageType.Warning);
+                }
+
+                // Show warning if no class is selected
+                if (characterData.characterClass == null)
+                {
+                    EditorGUILayout.HelpBox("Warning: This character does not have a class selected.", MessageType.Warning);
+                }
+
                 // Delete button
                 if (GUILayout.Button("Delete Character"))
                 {
@@ -82,7 +113,6 @@ public class CharacterEditor : EditorWindow
                 }
 
                 // CharacterData edit fields
-                characterData.characterClass = (ClassType)EditorGUILayout.EnumPopup("Character Class", characterData.characterClass);
                 characterData.baseInitiative = EditorGUILayout.FloatField("Base Initiative", characterData.baseInitiative);
                 characterData.baseHealth = EditorGUILayout.FloatField("Base Health", characterData.baseHealth);
                 characterData.baseDamage = EditorGUILayout.FloatField("Base Damage", characterData.baseDamage);

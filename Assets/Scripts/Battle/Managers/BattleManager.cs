@@ -23,6 +23,7 @@ public class BattleManager : MonoBehaviour
         // Check for input to sort turns and print turn order
         if (Input.GetKeyDown(KeyCode.Space))
         {
+            Debug.Log("pressing Space");
             SortTurns(); // Sort characters by their wait turn
             PrintTurns(); // Print current turns
         }

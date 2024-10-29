@@ -11,7 +11,7 @@ public class CharacterStats : ValidatedMonoBehaviour
     
     [Header("Character Stats")]
     public string characterName; // Character's name
-    public ClassType characterClass; // Character's class type
+    public ClassData characterClass; // Character's class type
     public float baseInitiative; // Base initiative stat
     public float baseHealth; // Base health stat
     public float baseDamage; // Base damage stat
@@ -39,16 +39,36 @@ public class CharacterStats : ValidatedMonoBehaviour
     // Applies class bonuses to character stats
     public void ApplyClassBonuses()
     {
-        ClassBonus classBonus = classManager.GetClassBonus(characterClass); // Get the class bonus for the character's class
-        
-        if (classBonus != null)
+        // Reset stats to base values before applying bonuses
+        initiative = baseInitiative;
+        health = baseHealth;
+        damage = baseDamage;
+        defense = baseDefense;
+
+        if (characterClass != null && characterClass.bonuses != null)
         {
-            // Apply class bonuses to base stats
-            initiative = baseInitiative * classBonus.initiativeBonus;
-            health = baseHealth * classBonus.healthBonus;
-            damage = baseDamage * classBonus.damageBonus;
-            defense = baseDefense * classBonus.defenseBonus;
-            // Add other bonuses as necessary
+            foreach (ClassData.Bonus bonus in characterClass.bonuses)
+            {
+                switch (bonus.bonusName.ToLower())
+                {
+                    case "initiative":
+                        initiative += baseInitiative * bonus.value; // Apply percentage increase
+                        break;
+                    case "health":
+                        health += baseHealth * bonus.value; // Apply percentage increase
+                        break;
+                    case "damage":
+                        damage += baseDamage * bonus.value; // Apply percentage increase
+                        break;
+                    case "defense":
+                        defense += baseDefense * bonus.value; // Apply percentage increase
+                        break;
+                    // Add other bonuses as necessary
+                    default:
+                        Debug.LogWarning("Unknown bonus type: " + bonus.bonusName);
+                        break;
+                }
+            }
         }
     }
 

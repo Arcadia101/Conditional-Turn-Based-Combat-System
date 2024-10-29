@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "CharacterManager", menuName = "Character Manager")]
+[CreateAssetMenu(fileName = "CharacterManager", menuName = "ScriptableObjects/Character Manager")]
 public class CharacterManager : ScriptableObject
 {
     public static CharacterManager instance;

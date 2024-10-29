@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Azael
   m_EditorClassIdentifier: 
   characterName: Azael
-  characterClass: 1
+  characterClass: {fileID: 11400000, guid: 2be80395fc79ad749915670daed7ffdd, type: 2}
   baseInitiative: 60
   baseHealth: 100
   baseDamage: 15

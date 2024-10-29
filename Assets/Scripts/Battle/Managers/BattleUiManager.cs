@@ -38,12 +38,14 @@ public class BattleUIManager : MonoBehaviour
     // Sorts the turn order UI
     private void SortTurns()
     {
+        Debug.Log("Sorted UI turns");
         turnOrderUI.Sort((turnInfo1, turnInfo2) => turnInfo1.WaitTurn.CompareTo(turnInfo2.WaitTurn)); // Sort by wait time
     }
 
     // Creates TurnInfo objects for each character
     private void CreateTurnInfos(List<Character> characters)
     {
+        Debug.Log("Creating turn infos");
         foreach (Character character in characters)
         {
             TurnInfo firstTurnInfo = new TurnInfo(
@@ -70,6 +72,7 @@ public class BattleUIManager : MonoBehaviour
     // Renders the turn order UI
     private void RenderTurnOrderUI()
     {
+        Debug.Log("Rendered turn order UI");
         // Clear existing UI elements
         foreach (Transform child in TurnOrderUIContainer.transform)
         {

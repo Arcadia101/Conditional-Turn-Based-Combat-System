@@ -1,22 +1,33 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-// Manages classes and skills in the game
-public class ClassManager : MonoBehaviour
+// Class that manages different class types in the game
+[CreateAssetMenu(fileName = "ClassManager", menuName = "ScriptableObjects/ClassManager", order = 1)]
+public class ClassManager : ScriptableObject
 {
-    public List<Skill> allSkills; // Complete list of skills in the game
-    public List<ClassBonus> classBonuses; // Bonuses associated with each class
+    public static ClassManager instance;
+    public List<ClassData> classDataList; // List to hold ClassData objects
     
-    // Returns a list of skills available for a specific class
-    public List<Skill> GetSkillsForClass(ClassType classType)
+    // Method to get skills for a specific class
+    public List<Skill> GetSkillsForClass(ClassData classData)
     {
-        // Filter and return the skills that the class type can use
-        return allSkills.FindAll(skill => skill.CanBeUsedByClass(classType));
+        if (classData != null)
+        {
+            return classData.availableSkills; // Return the list of skills for the specified class
+        }
+        return new List<Skill>(); // Return an empty list if classData is null
+    }
+    public List<ClassData.Bonus> GetBonusesForClass(ClassData classData)
+    {
+        if (classData != null)
+        {
+            return classData.bonuses; // Return the list of bonuses for the specified class
+        }
+        return new List<ClassData.Bonus>(); // Return an empty list if classData is null
     }
     
-    // Returns the class bonus for a specific class type
-    public ClassBonus GetClassBonus(ClassType classType)
+    private void OnEnable()
     {
-        return classBonuses.Find(bonus => bonus.classType == classType); // Find the class bonus for the given class type
+        instance = this; // Set the instance when enabled
     }
 }

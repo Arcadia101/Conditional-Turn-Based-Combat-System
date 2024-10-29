@@ -44,7 +44,7 @@ public class Character : MonoBehaviour
         stats.characterSprite = characterData.characterSprite;
 
         // Call ApplyClassBonuses if necessary
-        stats.ApplyClassBonuses();
+        //stats.ApplyClassBonuses();
     }
 
     public void CalculateNextTurn(float modifier)

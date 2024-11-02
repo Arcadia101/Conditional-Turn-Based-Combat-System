@@ -15,9 +15,9 @@ MonoBehaviour:
   classManager: {fileID: 11400000, guid: 6516e85aad7011949934d951e2a69adb, type: 2}
   characterName: Buti
   characterClass: {fileID: 11400000, guid: 0a98963d28a4d8343b5d9b6be57344cb, type: 2}
-  baseInitiative: 0
-  baseHealth: 0
-  baseDamage: 0
-  baseDefense: 0
-  turnSprite: {fileID: 0}
-  characterSprite: {fileID: 0}
+  baseInitiative: 80
+  baseHealth: 100
+  baseDamage: 10
+  baseDefense: 10
+  turnSprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  characterSprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}

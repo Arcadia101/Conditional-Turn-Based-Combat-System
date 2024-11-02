@@ -19,5 +19,5 @@ MonoBehaviour:
   baseHealth: 100
   baseDamage: 15
   baseDefense: 15
-  turnSprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-  characterSprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  turnSprite: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  characterSprite: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}

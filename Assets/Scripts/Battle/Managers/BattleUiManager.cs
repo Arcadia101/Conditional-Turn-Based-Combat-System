@@ -1,12 +1,5 @@
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
-
-using System.Collections.Generic;
-using TMPro;
-using UnityEngine;
-using UnityEngine.UI;
 
 // Manages the UI for the battle
 public class BattleUIManager : MonoBehaviour
@@ -45,7 +38,7 @@ public class BattleUIManager : MonoBehaviour
     // Creates TurnInfo objects for each character
     private void CreateTurnInfos(List<Character> characters)
     {
-        Debug.Log("Creating turn infos");
+        turnOrderUI.Clear(); // Clear the current UI list
         foreach (Character character in characters)
         {
             TurnInfo firstTurnInfo = new TurnInfo(
@@ -67,12 +60,12 @@ public class BattleUIManager : MonoBehaviour
             turnOrderUI.Add(firstTurnInfo); // Add first turn info to the list
             turnOrderUI.Add(secondTurnInfo); // Add second turn info to the list
         }
+        Debug.Log($"Created {turnOrderUI.Count} TurnInfo objects."); // Check the count of created TurnInfo objects
     }
 
     // Renders the turn order UI
     private void RenderTurnOrderUI()
     {
-        Debug.Log("Rendered turn order UI");
         // Clear existing UI elements
         foreach (Transform child in TurnOrderUIContainer.transform)
         {

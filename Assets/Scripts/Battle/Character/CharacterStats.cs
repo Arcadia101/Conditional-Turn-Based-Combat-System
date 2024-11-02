@@ -1,10 +1,9 @@
 using System;
 using System.Collections.Generic;
-using KBCore.Refs;
 using UnityEngine;
 
 // Class representing the statistics of a character
-public class CharacterStats : ValidatedMonoBehaviour
+public class CharacterStats : MonoBehaviour
 {
     private List<Skill> availableSkills; // List of skills available for the character
     public ClassManager classManager; // Reference to the ClassManager
@@ -52,16 +51,16 @@ public class CharacterStats : ValidatedMonoBehaviour
                 switch (bonus.bonusName.ToLower())
                 {
                     case "initiative":
-                        initiative += baseInitiative * bonus.value; // Apply percentage increase
+                        initiative = baseInitiative * bonus.value; // Apply percentage increase
                         break;
                     case "health":
-                        health += baseHealth * bonus.value; // Apply percentage increase
+                        health = baseHealth * bonus.value; // Apply percentage increase
                         break;
                     case "damage":
-                        damage += baseDamage * bonus.value; // Apply percentage increase
+                        damage = baseDamage * bonus.value; // Apply percentage increase
                         break;
                     case "defense":
-                        defense += baseDefense * bonus.value; // Apply percentage increase
+                        defense = baseDefense * bonus.value; // Apply percentage increase
                         break;
                     // Add other bonuses as necessary
                     default:

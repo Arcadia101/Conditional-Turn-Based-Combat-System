@@ -7,7 +7,8 @@ public class ClassEditor : EditorWindow
     private ClassManager classManager; // Reference to ClassManager
     private Vector2 scrollPos; // Scroll position
     private string newClassName = "New Class"; // Default name for new classes
-    private Dictionary<ClassData, bool> foldoutStates = new Dictionary<ClassData, bool>(); // Foldout states for classes
+    private Dictionary<ClassData, bool> classFoldoutStates = new Dictionary<ClassData, bool>(); // Foldout states for classes
+    private Dictionary<ClassData, bool> skillFoldoutStates = new Dictionary<ClassData, bool>(); // Foldout states for skills
 
     [MenuItem("Tools/Class Editor")]
     public static void ShowWindow()
@@ -55,11 +56,19 @@ public class ClassEditor : EditorWindow
             return;
         }
 
-        // Display available skills
-        EditorGUILayout.LabelField("Available Skills:", EditorStyles.boldLabel);
-        foreach (var skill in classData.availableSkills)
+        // Use foldout for available skills
+        if (!skillFoldoutStates.ContainsKey(classData))
         {
-            EditorGUILayout.LabelField(skill.skillName); // Show each skill name
+            skillFoldoutStates[classData] = false; // Initialize foldout state for skills
+        }
+
+        skillFoldoutStates[classData] = EditorGUILayout.Foldout(skillFoldoutStates[classData], "Available Skills", true);
+        if (skillFoldoutStates[classData])
+        {
+            foreach (var skill in classData.availableSkills)
+            {
+                EditorGUILayout.LabelField(skill.skillName); // Show each skill name
+            }
         }
     }
 
@@ -91,15 +100,16 @@ public class ClassEditor : EditorWindow
 
         foreach (ClassData classData in classManager.classDataList)
         {
-            if (!foldoutStates.ContainsKey(classData))
+            if (!classFoldoutStates.ContainsKey(classData))
             {
-                foldoutStates[classData] = false; // Initialize foldout state
+                classFoldoutStates[classData] = false; // Initialize foldout state for classes
             }
 
-            foldoutStates[classData] = EditorGUILayout.Foldout(foldoutStates[classData], classData.className, true, EditorStyles.foldout);
+            bool classFoldout = EditorGUILayout.Foldout(classFoldoutStates[classData], classData.className, true, EditorStyles.foldout);
 
-            if (foldoutStates[classData])
+            if (classFoldout)
             {
+                classFoldoutStates[classData] = true; // Update the class foldout state
                 EditorGUILayout.BeginVertical("box");
                 classData.className = EditorGUILayout.TextField("Class Name", classData.className);
                 
@@ -141,6 +151,10 @@ public class ClassEditor : EditorWindow
                 ShowAvailableSkills(classData);
 
                 EditorGUILayout.EndVertical();
+            }
+            else
+            {
+                classFoldoutStates[classData] = false; // Update the class foldout state
             }
 
             if (GUILayout.Button("Delete Class"))

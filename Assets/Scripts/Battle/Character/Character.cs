@@ -20,6 +20,8 @@ public class Character : MonoBehaviour
         {
             InitializeCharacter(characterData); // Initialize character stats
         }
+        CalculateInitialTurn();
+        if (!BattleManager.instance.characters.Contains(this)) BattleManager.instance.AddCharacter(this);
     }
 
     private void Update()
@@ -45,14 +47,20 @@ public class Character : MonoBehaviour
         stats.characterSprite = characterData.characterSprite;
 
         // Call ApplyClassBonuses if necessary
-        //stats.ApplyClassBonuses();
+        stats.ApplyClassBonuses();
+    }
+    
+    private void CalculateInitialTurn()
+    {
+        waitTurn = Mathf.Max(0, 100f - stats.initiative);
+        nextActionTime = Mathf.Max(0, waitTurn + (100f - stats.initiative)); // Testing, not optimized.
     }
 
     public void CalculateNextTurn(float modifier)
     {
         // Update the wait time for the next turn
         waitTurn = Mathf.Max(0, waitTurn + modifier);
-        nextActionTime = waitTurn + modifier; // Calculate the next action time
+        nextActionTime = Mathf.Max(0,waitTurn + modifier); // Calculate the next action time
     }
 
     public void WaitCountDown()

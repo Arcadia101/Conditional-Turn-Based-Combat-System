@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: Attack
   m_EditorClassIdentifier: 
   skillName: Attack
-  manaCost: 0
-  damage: 0
-  description: 
-  availableClasses: []
+  manaCost: 5
+  damage: 10
+  description: att
+  availableClasses:
+  - {fileID: 11400000, guid: aad5907fcfe5e86479b95ce48d872f66, type: 2}
+  - {fileID: 11400000, guid: 2be80395fc79ad749915670daed7ffdd, type: 2}

@@ -63,10 +63,15 @@ public class SkillEditor : EditorWindow
             if (foldoutStates[skillData])
             {
                 EditorGUILayout.BeginVertical("box");
-                skillData.skillName = EditorGUILayout.TextField("Skill Name", skillData.skillName);
-                skillData.manaCost = EditorGUILayout.IntField("Mana Cost", skillData.manaCost);
-                skillData.damage = EditorGUILayout.FloatField("Damage", skillData.damage);
-                skillData.description = EditorGUILayout.TextField("Description", skillData.description);
+
+                // Using SerializedObject for skillData
+                SerializedObject serializedSkill = new SerializedObject(skillData);
+                serializedSkill.Update();
+
+                EditorGUILayout.PropertyField(serializedSkill.FindProperty("skillName"));
+                EditorGUILayout.PropertyField(serializedSkill.FindProperty("manaCost"));
+                EditorGUILayout.PropertyField(serializedSkill.FindProperty("damage"));
+                EditorGUILayout.PropertyField(serializedSkill.FindProperty("description"));
 
                 EditorGUILayout.LabelField("Available Classes", EditorStyles.boldLabel);
                 
@@ -77,6 +82,7 @@ public class SkillEditor : EditorWindow
 
                 ShowClassLayerMask(skillData);
 
+                serializedSkill.ApplyModifiedProperties();
                 EditorGUILayout.EndVertical();
             }
 
@@ -104,6 +110,11 @@ public class SkillEditor : EditorWindow
 
     private void ShowClassLayerMask(Skill skillData)
     {
+        SerializedObject serializedSkill = new SerializedObject(skillData);
+        serializedSkill.Update();
+
+        SerializedProperty availableClassesProperty = serializedSkill.FindProperty("availableClasses");
+    
         List<ClassData> allClasses = AssetDatabase.LoadAssetAtPath<ClassManager>("Assets/ScriptableObjects/ClassManager.asset").classDataList;
 
         int layerMask = 0;
@@ -118,15 +129,22 @@ public class SkillEditor : EditorWindow
 
         layerMask = EditorGUILayout.MaskField("Select Classes", layerMask, GetClassNames(allClasses));
 
-        skillData.availableClasses.Clear();
+        availableClassesProperty.ClearArray(); // Clear the existing classes in the property
+
         for (int i = 0; i < allClasses.Count; i++)
         {
             if ((layerMask & (1 << i)) != 0)
             {
-                skillData.availableClasses.Add(allClasses[i]);
+                // Add to the availableClasses if it's selected
+                int index = availableClassesProperty.arraySize; // Get the current size
+                availableClassesProperty.InsertArrayElementAtIndex(index); // Add a new element
+                availableClassesProperty.GetArrayElementAtIndex(index).objectReferenceValue = allClasses[i]; // Set the reference
             }
         }
+
+        serializedSkill.ApplyModifiedProperties(); // Apply changes to the serialized object
     }
+
 
     private string[] GetClassNames(List<ClassData> classes)
     {

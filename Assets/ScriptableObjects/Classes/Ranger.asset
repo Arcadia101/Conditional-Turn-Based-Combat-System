@@ -22,7 +22,7 @@ MonoBehaviour:
     value: 1.5
   - bonusName: Health
     value: 1
-  - bonusName: Attack
+  - bonusName: Damage
     value: 1.5
   - bonusName: Defense
     value: 1

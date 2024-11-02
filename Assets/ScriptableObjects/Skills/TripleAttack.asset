@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: TripleAttack
   m_EditorClassIdentifier: 
   skillName: TripleAttack
-  manaCost: 0
-  damage: 0
-  description: 
-  availableClasses: []
+  manaCost: 25
+  damage: 30
+  description: ss
+  availableClasses:
+  - {fileID: 11400000, guid: aad5907fcfe5e86479b95ce48d872f66, type: 2}
+  - {fileID: 11400000, guid: 2766407b2b14d2c40a6ee83dd778e4ef, type: 2}

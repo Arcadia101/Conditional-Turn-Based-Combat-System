@@ -14,5 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   className: Warrior
   availableSkills:
+  - {fileID: 11400000, guid: 3441d0e0a1dd9eb4184c1dfab77652a6, type: 2}
   - {fileID: 11400000, guid: 4e7257cd1424fb148aa0dcd199e6b18d, type: 2}
-  bonuses: []
+  bonuses:
+  - bonusName: Health
+    value: 1.5

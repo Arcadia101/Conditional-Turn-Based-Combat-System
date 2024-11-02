@@ -14,5 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   className: Butifarrero
   availableSkills:
+  - {fileID: 11400000, guid: 82f144e32011ffe4cafac5afbcda1b97, type: 2}
   - {fileID: 11400000, guid: 4e7257cd1424fb148aa0dcd199e6b18d, type: 2}
-  bonuses: []
+  bonuses:
+  - bonusName: Damage
+    value: 1.4

@@ -16,3 +16,6 @@ MonoBehaviour:
   manaCost: 15
   damage: 20
   description: ataqueDoble
+  availableClasses:
+  - {fileID: 11400000, guid: aad5907fcfe5e86479b95ce48d872f66, type: 2}
+  - {fileID: 11400000, guid: 0a98963d28a4d8343b5d9b6be57344cb, type: 2}
